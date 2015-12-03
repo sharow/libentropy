@@ -66,6 +66,13 @@ $ find /usr/bin -size +5M | xargs entropy | column -t
 /usr/bin/go:                     5.336115
 /usr/bin/ceph-osd:               6.489573
 $
+$ find /usr/bin -size +10M | xargs entropy | awk -F : '{if ($2 < 5) print $0}' | column -t
+/usr/bin/gs:          2.838588
+/usr/bin/cluster:     2.272601
+/usr/bin/gvmap:       2.274877
+/usr/bin/edgepaint:   2.222340
+/usr/bin/emacs-24.5:  4.100438
+$
 $ cp /usr/bin/cluster .
 $ xz -vk cluster
 cluster (1/1)
