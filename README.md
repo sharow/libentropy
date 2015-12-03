@@ -85,3 +85,7 @@ $ ls -lh cluster cluster.xz
 -rwxr-xr-x 1 sharow wheel 344K Dec  3 13:40 cluster.xz
 $
 ```
+
+# about shannon entropy
+- [Entropy (information theory) - Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/Entropy_(information_theory))
+
