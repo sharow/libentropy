@@ -35,7 +35,7 @@ $(TARGET_LIB): $(OBJS)
 
 install: $(TARGET_BIN) $(TARGET_LIB)
 	install -Dm644 include/entropy.h $(DESTDIR)/usr/include/entropy/entropy.h
-	install -Dm644 $(TARGET_LIB) $(DESTDIR)/usr/lib/
+	install -Dm755 $(TARGET_LIB) $(DESTDIR)/usr/lib/
 	install -Dm755 $(TARGET_BIN) $(DESTDIR)/usr/bin/
 
 uninstall:
