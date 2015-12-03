@@ -65,18 +65,8 @@ $ find /usr/bin -size +5M | xargs entropy | column -t
 /usr/bin/trace:                  5.606387
 /usr/bin/go:                     5.336115
 /usr/bin/ceph-osd:               6.489573
-$ cp /usr/bin/cluster .
-@rockhunter $ ls -lh
-total 20M
--rwxr-xr-x 1 sharow wheel  20M Dec  3 13:40 cluster
--rwxr-xr-x 1 sharow wheel 9.5K Dec  3 13:37 entropy
-drwxr-xr-x 2 sharow wheel 4.0K Dec  3 13:28 include
--rw-r--r-- 1 sharow wheel 2.2K Dec  3 13:37 libentropy.a
--rw-r--r-- 1 sharow wheel 1.1K Dec  3 13:23 LICENSE
--rw-r--r-- 1 sharow wheel 1.1K Dec  3 13:28 makefile
--rw-r--r-- 1 sharow wheel   30 Dec  3 13:23 README.md
-drwxr-xr-x 2 sharow wheel 4.0K Dec  3 13:37 src
 $
+$ cp /usr/bin/cluster .
 $ xz -vk cluster
 cluster (1/1)
   100 %        343.8 KiB / 19.4 MiB = 0.017   989 KiB/s       0:20
