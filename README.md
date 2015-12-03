@@ -5,14 +5,19 @@ shannon entropy
 
 ```
 $ make
-cc -std=c11 -Wall -O2 -DNDEBUG  -I./include -c src/entropy.c -o src/entropy.o
-ar crv libentropy.a src/entropy.o
-a - src/entropy.o
-cc -std=c11 -Wall -O2 -DNDEBUG  -I./include src/main.c -o entropy libentropy.a -lm
+cc -std=c11 -Wall -fPIC -O2 -DNDEBUG  -I./include -c src/entropy.c -o src/entropy.o
+cc -shared -std=c11 -Wall -fPIC -O2 -DNDEBUG -o libentropy.so src/entropy.o
+cc -std=c11 -Wall -fPIC -O2 -DNDEBUG  -I./include src/main.c -o entropy libentropy.so -lm
 $ sudo make install
 install -Dm644 include/entropy.h /usr/include/entropy/entropy.h
-install -Dm644 libentropy.a /usr/lib/
+install -Dm644 libentropy.so /usr/lib/
 install -Dm755 entropy /usr/bin/
+$ ldd entropy
+linux-vdso.so.1 (0x00007ffe163f6000)
+libentropy.so => /usr/lib/libentropy.so (0x00007f1b186e8000)
+libm.so.6 => /usr/lib/libm.so.6 (0x00007f1b183ea000)
+libc.so.6 => /usr/lib/libc.so.6 (0x00007f1b18046000)
+/lib64/ld-linux-x86-64.so.2 (0x00007f1b188e9000)
 $
 ```
 
