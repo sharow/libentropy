@@ -5,13 +5,14 @@
 .VPATH: ./ ./src ./include
 
 TARGET_BIN=entropy
-TARGET_LIB=libentropy.a
+TARGET_LIB=libentropy.so
 
 SRCS+=src/entropy.c
 OBJS+=$(subst .c,.o, $(SRCS))
 
 CFLAGS+=-std=c11
 CFLAGS+=-Wall
+CFLAGS+=-fPIC
 ifeq ($(DEBUG),yes)
   CFLAGS+=-g
   CFLAGS+=-ggdb
@@ -30,7 +31,7 @@ $(TARGET_BIN): $(TARGET_LIB) src/main.c
 	$(CC) $(CFLAGS) $(DEFS) $(INCDIR) src/main.c -o $@ $(TARGET_LIB) $(LDFLAGS)
 
 $(TARGET_LIB): $(OBJS)
-	$(AR) crv $@ $?
+	$(CC) -shared $(CFLAGS) -o $@ $^
 
 install: $(TARGET_BIN) $(TARGET_LIB)
 	install -Dm644 include/entropy.h $(DESTDIR)/usr/include/entropy/entropy.h
