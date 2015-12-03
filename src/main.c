@@ -34,19 +34,17 @@ int entropy(FILE *fp, double *out_e)
 int main(int argc, char *argv[])
 {
     if (argc < 2) {
-        printf("no args\n");
+        double e;
+        if (entropy(stdin, &e) == 0) {
+            printf("<stdin>: %f\n", e);
+        }
         return EXIT_SUCCESS;
     }
 
     for (int i = 1; i < argc; i++) {
         double e;
         const char *path = argv[i];
-        FILE *fp;
-        if (strlen(path) == 1 && path[0] == '-') {
-            fp = stdin;
-        } else {
-            fp = fopen(path, "rb");
-        }
+        FILE *fp = fopen(path, "rb");
         if (!fp) {
             printf("fopen failed: %s\n", path);
             continue;
@@ -54,9 +52,7 @@ int main(int argc, char *argv[])
         if (entropy(fp, &e) == 0) {
             printf("%s: %f\n", path, e);
         }
-        if (fp != stdin) {
-            fclose(fp);
-        }
+        fclose(fp);
     }
     return EXIT_SUCCESS;
 }

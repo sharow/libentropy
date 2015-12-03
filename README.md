@@ -13,16 +13,15 @@ $ sudo make install
 install -Dm644 include/entropy.h /usr/include/entropy/entropy.h
 install -Dm644 libentropy.a /usr/lib/
 install -Dm755 entropy /usr/bin/
-$ entropy
-no args
+$
 ```
 
 # example
 ```
-$ echo 'abc' | entropy -
--: 2.000000
-$ echo 'abcdef' | entropy -
--: 2.807355
+$ echo 'abc' | entropy
+<stdin>: 2.000000
+$ echo 'abcdef' | entropy
+<stdin>: 2.807355
 $ find /usr/bin -size +5M | xargs entropy | column -t
 /usr/bin/gdb:                    5.794477
 /usr/bin/cephfs-table-tool:      6.441336
